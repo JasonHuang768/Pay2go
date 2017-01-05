@@ -12,8 +12,8 @@ namespace Pay2go;
 
 class Query {
 
-	protected $LiveAction = "https://api.pay2go.com/API/QueryTradeInfo";
-	protected $TestAction = "https://capi.pay2go.com/API/QueryTradeInfo";
+	protected $LiveEndPoint = "https://api.pay2go.com/API/QueryTradeInfo";
+	protected $TestEndPoint = "https://capi.pay2go.com/API/QueryTradeInfo";
 
 	public function __construct($merchantId, $hashKey, $hashIv, $mode = false){
 
@@ -56,7 +56,7 @@ class Query {
     	$Html .= '<html>';
     	$Html .= '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
     	$Html .= '<body>';
-        $Html .= '<form name="Pay2goForm" method = "post" action="'.$this->setActionMode().'">';
+        $Html .= '<form name="Pay2goForm" method = "post" action="'.$this->setEndPointMode().'">';
 		foreach ($paramsSend as $key => $val) {
 		    $Html .= "<input type='hidden' name='".$key."' value='".$val."'>";
 		}
@@ -70,8 +70,8 @@ class Query {
 	}
 
 	# 路徑
-	protected function setActionMode(){
-        return $this->testMode ? $this->TestAction : $this->LiveAction;
+	protected function setEndPointMode(){
+        return $this->testMode ? $this->TestEndPoint : $this->LiveEndPoint;
     }
 
     # 仿自然排序法

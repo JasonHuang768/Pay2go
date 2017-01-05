@@ -1,5 +1,5 @@
 <?php
-require("pay2go.php");
+require("src/pay2go.php");
 // require("AioSDK.php");
 
 $merchantId    = '12074830';
